@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Last 3 forked users</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-spinner
+    class="mx-auto"
+    diameter="50"
+    *ngIf="isLoading"
+    color="accent"
+  ></mat-spinner>
+  <div *ngIf="!isLoading">
+    <mat-nav-list *ngIf="forked_users.length > 0">
+      <ng-container *ngFor="let user of forked_users.slice(0, 3)">
+        <mat-list-item (click)="routeToFork(user.html_url)">
+          <img
+            class="avatar"
+            [src]="user.owner?.avatar_url"
+            alt="user_avatar"
+          />
+          <span>{{ user.owner?.login }}</span>
+        </mat-list-item>
+      </ng-container>
+    </mat-nav-list>
+    <span *ngIf="forked_users.length === 0"> No user found </span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

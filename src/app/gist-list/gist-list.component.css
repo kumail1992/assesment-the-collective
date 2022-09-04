@@ -1,0 +1,15 @@
+.table-container {
+  position: relative;
+  height: calc(100vh - 131px);
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
